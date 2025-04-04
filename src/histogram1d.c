@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "../include/histogram1d.h"
+#include "histogram1d.h"
 
 void histogram_init(struct Histogram1D * h,
         float rangeMin, float rangeMax) {
