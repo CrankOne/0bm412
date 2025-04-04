@@ -17,7 +17,7 @@ int main() {
     rangeY[0] = 0;
     rangeY[1] = 1;
 
-    histogram_init(&h, rangeX[0], rangeX[1]);
+    histogram_init(&h, rangeX[0], rangeX[1], 100);
 
     float x = 0.;
     for(int i = 0 ; i < 1e2; ++i) {
@@ -26,6 +26,7 @@ int main() {
         //printf("%e\n", inv_func(u));
     }
     histogram_print(&h);
+    histogram_delete(&h);
     return 0;
 }
 
