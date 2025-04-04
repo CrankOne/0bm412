@@ -15,6 +15,8 @@ void histogram_init(struct Histogram1D * h,
 }
 
 void histogram_fill(struct Histogram1D * h, float v ) {
+    if(v < h->rangeMin || v > h->rangeMax)
+        return;
     int nBin = (v - h->rangeMin)*h->N / h->rangeLength;
     assert(nBin >= 0);
     assert(nBin < h->N);
