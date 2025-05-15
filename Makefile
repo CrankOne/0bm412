@@ -22,9 +22,13 @@ obj/main.%.o: main.%.c
 obj/%.o: src/%.cc
 	g++ -c $(CFLAGS) $< -o $@
 
-# Rule to produce .o files from .c (C++) files in current dir
+# Rule to produce .o files from main.*.cc (C++) files in current dir
 obj/main.%.o: main.%.cc
 	g++ -c $(CFLAGS) $< -o $@
+
+# Rule to produce .o files from g4/*.cc (C++) files in src/
+obj/g4-%.o: src/g4/%.cc
+	g++ -c $(shell geant4-config --cflags) $(CFLAGS) $< -o $@
 
 #
 # Project main targets
@@ -46,6 +50,14 @@ inverse-function: obj/main.inverse-function.o lib0bm412.a
 # testing executable for kahan summator
 kahan-sum: obj/main.kahan.o lib0bm412.a
 	gcc $< -L. -l0bm412 -lm -o $@
+
+# Geant4 application
+g4-app: obj/g4-PrimaryGeneratorAction.o \
+		obj/g4-DetectorConstruction.o \
+		obj/g4-ActionInitialization.o \
+		obj/g4-SensitiveDetector.o \
+		lib0bm412.a
+	gcc $< -L. $(shell geant4-config --libs) -o $@
 
 #
 # Aux targets
