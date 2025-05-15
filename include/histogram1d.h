@@ -1,3 +1,10 @@
+#ifndef H_0BM412_HISTOGRAM1D_H
+#define H_0BM412_HISTOGRAM1D_H 1
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct Histogram1D {
     int N;
     int * counters;
@@ -17,3 +24,8 @@ void histogram_print(struct Histogram1D * h);
 
 void histogram_delete(struct Histogram1D * h);
 
+#ifdef __cplusplus
+}
+#endif
+
+#endif
