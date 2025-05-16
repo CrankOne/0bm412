@@ -1,3 +1,12 @@
 a.out
 *.o
 test-accept-reject
+.compile_flags
+compile_flags.txt
+G4History.macro
+accept-reject
+compile_flags.txt
+g4-app
+kahan-sum
+lib0bm412.a
+meanLosses.dat
